@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Function Outputs</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+      background-color: #f0f8ff;
+    }
+    .output {
+      background-color: #fff;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-left: 5px solid #4CAF50;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #333;
+    }
+    pre {
+      font-size: 16px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>JavaScript Function Outputs</h1>
+
+  <div class="output" id="out1"></div>
+  <div class="output" id="out2"></div>
+  <div class="output" id="out3"></div>
+  <div class="output" id="out4"></div>
+  <div class="output" id="out5"></div>
+
+  <script>
+    // 1. Function to Filter Out Negative Numbers
+    function filterNegatives(arr) {
+      return arr.filter(num => num >= 0);
+    }
+    let result1 = filterNegatives([5, -3, 9, -1, 0, 8]);
+    document.getElementById("out1").innerHTML = `
+      <h2>1. Filter Out Negative Numbers</h2>
+      <pre>Input: [5, -3, 9, -1, 0, 8]
+Output: [${result1.join(', ')}]</pre>
+    `;
+
+    // 2. Difference with 13 Function
+    function diffWith13(num) {
+      return num > 13 ? 2 * Math.abs(num - 13) : 13 - num;
+    }
+    let result2a = diffWith13(20);
+    let result2b = diffWith13(10);
+    document.getElementById("out2").innerHTML = `
+      <h2>2. Difference With 13</h2>
+      <pre>Input: 20 → Output: ${result2a}
+Input: 10 → Output: ${result2b}</pre>
+    `;
+
+    // 3. Fibonacci Series
+    function fibonacci(n) {
+      let fib = [0, 1];
+      for (let i = 2; i < n; i++) {
+        fib[i] = fib[i - 1] + fib[i - 2];
+      }
+      return fib.slice(0, n);
+    }
+    let result3 = fibonacci(10);
+    document.getElementById("out3").innerHTML = `
+      <h2>3. Fibonacci Series (First 10 Terms)</h2>
+      <pre>${result3.join(', ')}</pre>
+    `;
+
+    // 4. Sum of Multiples of 3 and 5 under 1000
+    function sumMultiples(limit) {
+      let sum = 0;
+      for (let i = 0; i < limit; i++) {
+        if (i % 3 === 0 || i % 5 === 0) {
+          sum += i;
+        }
+      }
+      return sum;
+    }
+    let result4 = sumMultiples(1000);
+    document.getElementById("out4").innerHTML = `
+      <h2>4. Sum of Multiples of 3 and 5 under 1000</h2>
+      <pre>${result4}</pre>
+    `;
+
+    // 5. Cube using Function Object
+    let cube = new Function("n", "return n * n * n;");
+    let result5a = cube(3);
+    let result5b = cube(5);
+    document.getElementById("out5").innerHTML = `
+      <h2>5. Cube of a Number using Function Object</h2>
+      <pre>Input: 3 → Output: ${result5a}
+Input: 5 → Output: ${result5b}</pre>
+    `;
+  </script>
+
+</body>
+</html>
